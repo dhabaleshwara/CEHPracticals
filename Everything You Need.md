@@ -136,6 +136,9 @@ http://192.168.44.32:8080/DVWA/ECweb/Certified/
 cat filename.txt | base64 --decode > decoded.txt
 8.2- powershellCopy code
 Get-Content filename.txt | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) } > decoded.txt
+9- dirsearch -u https://example.com
+dirsearch -e php,html,js,txt -u https://example.com -> for extension search
+dirsearch -e php,html,js,txt -u https://example.com -w /usr/share/wordlists/dirb/common.txt -> for wordlist search
 ```
 #  SQL Injections
 ```
