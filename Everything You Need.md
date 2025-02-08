@@ -49,7 +49,6 @@ cat imroot.txt
 13- Thief RAT -> Connect to 10.10.55.X -> Authenticate
 Thief RAT -> File Manager -> Navigate to C:\Users\Username\Documents
 Thief RAT -> File Manager -> Open folder -> Count files
-Find PT_LOAD 0 of the malware executable file given.
 find / -type f -name Netnormal.txt 2> /dev/null
 cat Netnormal.txt
 ```
