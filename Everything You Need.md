@@ -60,6 +60,9 @@ cat Netnormal.txt
 4- shCopy code
    john --format=Raw-MD5 --wordlist=rockyou.txt Hash2crack.txt
 5- snow.exe -C -p “password” file.txt
+6- stegsnow -p password -C restricted.txt output.txt
+cat output.txt
+cat output.txt | base64 -d
 ```
 #  Sniffing
 ```
