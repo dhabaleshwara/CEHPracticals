@@ -49,6 +49,8 @@ cat imroot.txt
 13- Thief RAT -> Connect to 10.10.55.X -> Authenticate
 Thief RAT -> File Manager -> Navigate to C:\Users\Username\Documents
 Thief RAT -> File Manager -> Open folder -> Count files
+find / -type f -name Netnormal.txt 2> /dev/null
+cat Netnormal.txt
 ```
 #  Quick Overview (Stegnography) --> Snow , Openstego
 ```
