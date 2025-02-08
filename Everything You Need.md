@@ -1,23 +1,23 @@
 # My ceh practical notes
 #  Scanning Networks (always do sudo su) --> To be root
 ```
-1- Nmap scan for alive/active hosts command for 192.189.19.18- nmap -A 192.189.xx.xx/24 or nmap -T4 -A ip
-2- Zenmap/nmap command for TCP scan- First put the target ip in the Target: and then in the Command: put this command- nmap -sT -v 10.xx.xx.xx
-3- Nmap scan if firewall/IDS is opened, half scan- nmap -sS -v 10.xx.xx.xx 
-If even this the above command is not working then use this command-  namp -f 10.xx.xx.xx
+1- Nmap scan for alive/active hosts command for xxx.xxx.xx.xx- nmap -A xx.xx.xx.xx/24 or nmap -T4 -A ip
+2- Zenmap/nmap command for TCP scan- First put the target ip in the Target: and then in the Command: put this command- nmap -sT -v xx.xx.xx.xx
+3- Nmap scan if firewall/IDS is opened, half scan- nmap -sS -v xx.xx.xx.xx 
+If even this the above command is not working then use this command-  namp -f xx.xx.xx.xx
 4- -A command is aggressive scan it includes - OS detection (-O), Version (-sV), Script (-sS) and traceroute (--traceroute).
 5- Identify Target system os with (Time to Live) TTL and TCP window sizes using wireshark- Check the target ip Time to live value with protocol ICMP. If it is 128 then it is windows, as ICMP value came from windows. If TTL is 64 then it is linux. Every OS has different TTL. TTL 254 is solaris.
-6- Nmap scan for host discovery or OS- nmap -O 192.168.92.10 or you can use nmap -A 192.168.xx.xx
+6- Nmap scan for host discovery or OS- nmap -O xx.xx.xx.xx or you can use nmap -A xx.xx.xx.xx
 7- If host is windows then use this command - nmap --script smb-os-discovery.nse 192.168.xx.xx (this script determines the OS, computer name, domain, workgroup, time over smb protocol (ports 445 or 139).
-8- nmap command for source port manipulation, in this port is given or we use common port-  nmap -g 80 10.xx.xx.xx
-9- nmap --script smb-os-discovery -p 445 <DC-IP-Address>
-10- nmap -sV -p 25,80,110,143 <ip-subnet> # 192.168.x.xx/24  to identify the number ofmercury services running
-11- nmap -p 3389 --open -sV 10.xx.xx.xx/24 to Identify a machine with RDP service enabled
-12- nmap -p 80,443,8080,8443,5228 --open 10.xx.xx.xx/24 or nmap -sV -p 5555 192.168.x.x/2x to identify mobile devices
-13- nmap -p 22 --open 10.xx.xx.x/24  scan for SSh 
-14- nmap -p 139,445 --open -sV 10.xx.xx.x/24 or nmap -T4 -A -p 139,445 192.168.x.x/2x  to identify SMB services 
-15- namp -sV -A -p 80 10.10.xx.xx/24 or nmap -T4 -A 192.168.x.x/2x or nmap -T4 -A -p 80,443 192.168.x.x/2x to identify server running WampServer.
-16- nmap -p 21 192.168.x.x/24   Identify FTP Service
+8- nmap command for source port manipulation, in this port is given or we use common port-  nmap -g 80 xx.xx.xx.xx
+9- nmap --script smb-os-discovery -p 445 xx.xxx.xxx.xxx
+10- nmap -sV -p 25,80,110,143 xx.xx.x.xx/24  to identify the number ofmercury services running
+11- nmap -p 3389 --open -sV xx.xx.xx.xx/24 to Identify a machine with RDP service enabled
+12- nmap -p 80,443,8080,8443,5228 --open xx.xx.xx.xx/24 or nmap -sV -p 5555 x.x.x.x/24 to identify mobile devices
+13- nmap -p 22 --open x.xx.xx.x/24 scan for SSh 
+14- nmap -p 139,445 --open -sV x.xx.xx.x/24 or nmap -T4 -A -p 139,445 x.x.x.x/24 to identify SMB services 
+15- namp -sV -A -p 80 x.x.xx.xx/24 or nmap -T4 -A x.x.x.x/24 or nmap -T4 -A -p 80,443 xx.xx.x.x/2x to identify server running WampServer.
+16- nmap -p 21 x.x.x.x/24 to Identify FTP Service
 ```
 # Enumeration
 ```
