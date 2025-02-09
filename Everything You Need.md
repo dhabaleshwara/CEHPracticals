@@ -135,12 +135,9 @@ set RPORT 80 # Ensure the port is correct for HTTP
 run
 find / -name Flag.txt 2>/dev/null
 cat /path/to/Flag.txt
-8- arduinoCopy code
-http://192.168.44.32:8080/DVWA/ECweb/Certified/
-8.1- shCopy code
-cat filename.txt | base64 --decode > decoded.txt
-8.2- powershellCopy code
-Get-Content filename.txt | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) } > decoded.txt
+8- http://192.168.44.32:8080/DVWA/ECweb/Certified/
+8.1- cat filename.txt | base64 --decode > decoded.txt
+8.2- Get-Content filename.txt | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) } > decoded.txt
 9- dirsearch -u https://example.com
 dirsearch -e php,html,js,txt -u https://example.com -> for extension search
 dirsearch -e php,html,js,txt -u https://example.com -w /usr/share/wordlists/dirb/common.txt -> for wordlist search
