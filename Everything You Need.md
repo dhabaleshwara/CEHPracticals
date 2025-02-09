@@ -189,6 +189,7 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 tcp.flags.syn == 1 and tcp.flags.ack == 0    (How many machines) or Go to statistics IPv4 addresses--> Source and Destination ---> Then you can apply the filter given
 tcp.flags.syn == 1   (Which machine for dos)
 tcp.flags.ack == 0
+mqtt.msgtype == 3
 http.request.method == POST   (for passwords) or click tools ---> credentials
 Also
 MQTT for ioT devices
