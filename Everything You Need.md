@@ -58,8 +58,7 @@ cat Netnormal.txt
 1- Hide Data Using Whitespace Stegnography- snow -C -m "My swiss account number is 121212121212" -p "magic" readme.txt readme2.txt  (magic is password and your secret is stored in readme2.txt along with the content of readme.txt)
 2- To Display Hidden Data- snow -C -p "magic" readme2.txt (then it will show the content of readme2.txt content)
 3- Image Stegnography using Openstego- PRACTICE ??
-4- shCopy code
-   john --format=Raw-MD5 --wordlist=rockyou.txt Hash2crack.txt
+4- john --format=Raw-MD5 --wordlist=rockyou.txt Hash2crack.txt
 5- snow.exe -C -p “password” file.txt
 6- stegsnow -p password -C restricted.txt output.txt
 cat output.txt
