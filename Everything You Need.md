@@ -197,6 +197,8 @@ MQTT for ioT devices
 ```
 nmap -p389 –sV -iL <target_list>  or nmap -p389 –sV <target_IP> (Find the FQDN in a subnet/network)
 nmap --script smb-os-discovery -p 445 <IP-Address>
+nmap -p 389 --script ldap-rootdse <target_IP>
+nmap -T4 -A -p 389,636,3268,3269 10.xx.x.x/2x
 ```
 # Cracking Wi-Fi networks
 ```
