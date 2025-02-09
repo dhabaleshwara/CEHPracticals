@@ -18,6 +18,7 @@ If even this the above command is not working then use this command-  namp -f xx
 14- nmap -p 139,445 --open -sV x.xx.xx.x/24 or nmap -T4 -A -p 139,445 x.x.x.x/24 to identify SMB services 
 15- namp -sV -A -p 80 x.x.xx.xx/24 or nmap -T4 -A x.x.x.x/24 or nmap -T4 -A -p 80,443 xx.xx.x.x/2x to identify server running WampServer.
 16- nmap -p 21 x.x.x.x/24 to Identify FTP Service
+17- nmap -sV —p 2049 IP/Subnet to identify NFS port
 ```
 # Enumeration
 ```
@@ -187,6 +188,7 @@ sqlmap -u "http://www.xyz.com/profile.aspx?id=1" --cookie="[cookie value that yo
 ```
 tcp.flags.syn == 1 and tcp.flags.ack == 0    (How many machines) or Go to statistics IPv4 addresses--> Source and Destination ---> Then you can apply the filter given
 tcp.flags.syn == 1   (Which machine for dos)
+tcp.flags.ack == 0
 http.request.method == POST   (for passwords) or click tools ---> credentials
 Also
 MQTT for ioT devices
